@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import random
 
-
 def select_random_elements_from_list(number_of_selection, liste):
     if number_of_selection > len(liste):
         return "Error: More elements requested than are available in the list."
@@ -38,6 +37,10 @@ df = fetch_data(session,nombre_de_question)
 st.dataframe(df)
 
 
+for index, row in df.iterrows():
+    st.write(row['ENONCE'])
+    for i in range(len(row['REPONSES'])):
+        st.checkbox(row['REPONSES'][i])
 
 
 
