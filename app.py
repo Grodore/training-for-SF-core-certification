@@ -7,6 +7,19 @@ def select_random_elements_from_list(number_of_selection, liste):
         return "Error: More elements requested than are available in the list."
     return random.sample(liste, number_of_selection)
 
+
+def extraction_des_reponses(chaine):
+    cadre = "[]'"
+    liste = []
+    
+    #boucle pour supprimer les crochets
+    for i in cadre:
+        chaine = chaine.replace(i, "")
+    liste = chaine.split(',')
+    return liste
+
+
+
 # Assuming you have a session to Snowflake already established
 def fetch_data(session,number_of_rows_to_fetch=10):
     lenmax = 50  # Maximum ID value
@@ -37,8 +50,9 @@ df = fetch_data(session,nombre_de_question)
 #afficher la première question
 st.write(df['ENONCE'][0])
 list = []
-list = (df['REPONSES'][0])
-st.write(list)
+list = extraction_des_reponses(df['REPONSES'][0])
+for i in list:
+    st.write(i)
 
 
 
