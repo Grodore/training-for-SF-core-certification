@@ -39,7 +39,6 @@ st.dataframe(df)
 st.write(df['ENONCE'][0])
 for row in df:
     st.write(len(row))
-    st.write(row[0])
 """for index, row in df.iterrows():
     st.write(row['ENONCE'])
     for i in range(len(row['REPONSES'])):
