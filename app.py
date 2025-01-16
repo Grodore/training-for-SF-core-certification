@@ -38,7 +38,7 @@ df = fetch_data(session,nombre_de_question)
 st.write(df['ENONCE'][0])
 list = []
 list = (df['REPONSES'][0])
-st.write(list[0])
+st.write(list)
 
 
 
