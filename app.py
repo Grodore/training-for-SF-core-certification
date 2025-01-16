@@ -38,8 +38,8 @@ st.dataframe(df)
 
 st.write(df['ENONCE'][0])
 for row in df:
-    st.write(row['REPONSES'])
-    st.write(row['CORRECTION'])
+    st.write(row[1])
+    st.write(row[2])
 """for index, row in df.iterrows():
     st.write(row['ENONCE'])
     for i in range(len(row['REPONSES'])):
