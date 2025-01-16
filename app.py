@@ -37,6 +37,9 @@ df = fetch_data(session,nombre_de_question)
 st.dataframe(df)
 
 st.write(df['ENONCE'][0])
+for row in df:
+    st.write(row['REPONSES'])
+    st.write(row['CORRECTION'])
 """for index, row in df.iterrows():
     st.write(row['ENONCE'])
     for i in range(len(row['REPONSES'])):
