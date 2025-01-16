@@ -53,6 +53,7 @@ list = []
 list = extraction_des_reponses(df['REPONSES'][0])
 for i in list:
     st.write(i)
+    st.checkbox(i, key=i)
 
 
 
