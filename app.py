@@ -37,10 +37,8 @@ df = fetch_data(session,nombre_de_question)
 #afficher la première question
 st.write(df['ENONCE'][0])
 list = []
-list = df['REPONSES'][0]
-st.write(list)
-for i in range(len(list)):
-    st.checkbox(list[i],key=i)
+list = (df['REPONSES'][0])
+st.write(list[0])
 
 
 
