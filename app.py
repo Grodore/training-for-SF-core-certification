@@ -49,20 +49,16 @@ session = cnx.session()
 df = fetch_data(session,nombre_de_question)
 #afficher la première question
 st.write(df['ENONCE'][0])
-list = []
-list = extraction_des_reponses(df['REPONSES'][0])
-for i in list:
-    st.write(i)
-    st.checkbox(i, key=i)
 
 
-
-"""for index, row in df.iterrows():
+indexkey=0
+for index, row in df.iterrows():
     st.write(row['ENONCE'])
-    for i in range(len(row['REPONSES'])):
-        st.checkbox(row['REPONSES'][i])
-
-
+    rep_list = []
+    rep_list = extraction_des_reponses(df['REPONSES'][0])
+    for r in rep_list:
+        indexkey+=1
+        st.checkbox(r, key=indexkey)
 
 
 
