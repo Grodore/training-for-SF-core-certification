@@ -39,7 +39,8 @@ st.write(df['ENONCE'][0])
 list = []
 list = df['REPONSES'][0]
 st.write(list)
-st.write(type(list))
+for i in range(len(list)):
+    st.checkbox(list[i],key=i)
 
 
 
