@@ -36,8 +36,8 @@ session = cnx.session()
 df = fetch_data(session,nombre_de_question)
 st.dataframe(df)
 
-
-for index, row in df.iterrows():
+st.write(df['ENONCE'][0])
+"""for index, row in df.iterrows():
     st.write(row['ENONCE'])
     for i in range(len(row['REPONSES'])):
         st.checkbox(row['REPONSES'][i])
@@ -49,7 +49,7 @@ for index, row in df.iterrows():
 
 
 
-"""if st.button("Mode examen, score et correction à la fin"):
+if st.button("Mode examen, score et correction à la fin"):
     mode = 1
     st.write("Mode examen selectionné !")
 
