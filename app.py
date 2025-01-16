@@ -3,7 +3,6 @@ import pandas as pd
 import random
 
 
-
 def select_random_elements_from_list(number_of_selection, liste):
     if number_of_selection > len(liste):
         return "Error: More elements requested than are available in the list."
