@@ -35,7 +35,8 @@ session = cnx.session()
 
 df = fetch_data(session,nombre_de_question)
 st.dataframe(df)
-
+st.write(df['ENONCE'][0])
+st.write(df['REPONSES'][0])
 """for index, row in df.iterrows():
     st.write(row['ENONCE'])
     for i in range(len(row['REPONSES'])):
