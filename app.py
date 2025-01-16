@@ -39,6 +39,7 @@ st.write(df['ENONCE'][0])
 list = []
 list = df['REPONSES'][0]
 st.write(list)
+st.write(type(list))
 
 
 
