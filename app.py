@@ -9,7 +9,7 @@ def select_random_elements_from_list(number_of_selection, liste):
 
 
 def extraction_des_reponses(chaine):
-    cadre = "[]'"
+    cadre = "[]\"'"
     liste = []
     
     #boucle pour supprimer les crochets
