@@ -36,6 +36,9 @@ session = cnx.session()
 df = fetch_data(session,nombre_de_question)
 #afficher la première question
 st.write(df['ENONCE'][0])
+list = []
+list = df['REPONSES'][0]
+st.write(list)
 
 
 
