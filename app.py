@@ -34,9 +34,11 @@ session = cnx.session()
 # Using Streamlit to display the data
 
 df = fetch_data(session,nombre_de_question)
-st.dataframe(df)
+#afficher la première question
 st.write(df['ENONCE'][0])
-st.write(df['REPONSES'][0])
+
+
+
 """for index, row in df.iterrows():
     st.write(row['ENONCE'])
     for i in range(len(row['REPONSES'])):
