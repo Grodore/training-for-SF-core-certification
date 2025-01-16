@@ -71,7 +71,7 @@ if st.button("Mode examen, score et correction à la fin"):
 
 if st.button("Mode entrainement, correction à chaque question"):
     mode = 2
-    st.write("Mode entrainement selectionné !")"""
+    st.write("Mode entrainement selectionné !")
 
 
 
