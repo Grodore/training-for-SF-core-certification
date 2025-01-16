@@ -36,9 +36,11 @@ session = cnx.session()
 df = fetch_data(session,nombre_de_question)
 st.dataframe(df)
 
-st.write(df['ENONCE'][0])
-for row in df:
-    st.write(len(row))
+for i in range(len(df)):
+    st.write(df['ENONCE'][i])
+    for j in range(len(df['REPONSES'][i])):
+        st.checkbox(df['REPONSES'][i][j])
+
 """for index, row in df.iterrows():
     st.write(row['ENONCE'])
     for i in range(len(row['REPONSES'])):
