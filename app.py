@@ -37,6 +37,9 @@ if 'df' not in st.session_state:
     cnx = st.connection("snowflake")
     session = cnx.session()
     st.session_state.df = fetch_data(session, nombre_de_question)
+
+
+
 if 'mode' not in st.session_state:
     st.session_state.mode = 0
 if 'score' not in st.session_state:
@@ -82,11 +85,4 @@ if 'df' in st.session_state:
 
         st.write("Score final :", st.session_state.score)
 
-# Buttons to select mode
-if st.button("Mode examen, score et correction à la fin"):
-    st.session_state.mode = 1
-    st.write("Mode examen sélectionné !")
 
-if st.button("Mode entrainement, correction à chaque question"):
-    st.session_state.mode = 2
-    st.write("Mode entrainement sélectionné !")
