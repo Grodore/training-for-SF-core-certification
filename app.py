@@ -75,6 +75,8 @@ if 'df' in st.session_state:
                     st.session_state.checked_answers[key] = False
             if user_checks == corrections:
                 st.session_state.score += 1
+                user_checks.clear()
+                corrections.clear()
         if st.button("Afficher le score final"):
             st.subheader("Score final :")
             st.write(st.session_state.score)
