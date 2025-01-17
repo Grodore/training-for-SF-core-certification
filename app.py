@@ -61,9 +61,11 @@ if 'df' in st.session_state:
         for index, row in enumerate(st.session_state.df.itertuples()):
             st.subheader(f"Question {index + 1}")
             st.write(row.ENONCE)
+            user_checks = []
+            corrections = []
             rep_list = extraction_des_reponses(row.REPONSES)
             corrections = extraction_des_reponses(row.CORRECTION)
-            user_checks = []
+            
             for i, r in enumerate(rep_list):
                 key = f"check-{index}-{i}"
                 if st.checkbox(r, key=key, value=st.session_state.checked_answers.get(key, False)):
@@ -71,7 +73,7 @@ if 'df' in st.session_state:
                     st.session_state.checked_answers[key] = True
                 else:
                     st.session_state.checked_answers[key] = False
-            if set(user_checks) == set(corrections):
+            if user_checks == corrections:
                 st.session_state.score += 1
         if st.button("Afficher le score final"):
             st.subheader("Score final :")
