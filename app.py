@@ -76,7 +76,6 @@ if 'df' in st.session_state:
         if st.button("Afficher le score final"):
             st.subheader("Score final :", st.session_state.score)
             st.session_state.score = 0
-
-        st.write("Score final :", st.session_state.score)
+            st.write("Score final :", st.session_state.score)
 
 
