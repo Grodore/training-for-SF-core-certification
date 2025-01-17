@@ -64,5 +64,6 @@ if st.session_state.mode == 1:
         if set(user_checks) == set(corrections):
             st.session_state.score += 1
     if st.button("Afficher le score final"):
-        st.write("Score final :", st.session_state.score)
-st.session_state.score = 0
+        st.subheader("Score final :", st.session_state.score)
+        st.session_state.score = 0
+
