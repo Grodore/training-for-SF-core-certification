@@ -50,7 +50,7 @@ session = cnx.session()
 
 df = fetch_data(session,nombre_de_question)
 corrections = []
-
+st.dataframe(df)
 
 
 indexkey=0
