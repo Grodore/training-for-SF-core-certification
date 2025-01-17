@@ -41,8 +41,11 @@ st.title('Application d\'entrainement pour la certification Snowflake Core')
 nombre_de_question =st.selectbox("Nombre de questions", list(range(1,50)))
 mode = 0
 score = 0
+
+if mode not in st.session_state:
+    st.session_state['mode']=0
 if score not in st.session_state:
-    st.session_state['score'] = 0
+    st.session_state['score']=0
 
 
 
@@ -60,16 +63,16 @@ indexkey=0
 
 
 if st.button("Mode examen, score et correction à la fin"):
-    mode =1
+    st.session_state['mode'] = 1
     st.write("Mode examen selectionné !")
 
 if st.button("Mode entrainement, correction à chaque question"):
-    mode = 2
+    st.session_state['mode'] = 2
     st.write("Mode entrainement selectionné !")
 
 
 
-if mode == 0:
+if st.session_state['mode'] == 1:
     for index, row in df.iterrows():
         st.subheader("Question " + str(index+1))
         st.write(row['ENONCE'])
@@ -83,5 +86,5 @@ if mode == 0:
             if st.checkbox(r, key=indexkey):
                 checked.append(r)
         if checked == corrections:
-            score +=1
-st.write("Score final : ", score)
+            st.session_state['score'] +=1
+st.write("Score final : ", st.session_state['score'])
