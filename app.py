@@ -43,12 +43,6 @@ mode = 0
 score = 0
 indexkey = 0
 
-if mode not in st.session_state:
-    st.session_state.mode=0
-if score not in st.session_state:
-    st.session_state.score=0
-if indexkey not in st.session_state:
-    st.session_state.indexkey=0
 
 
 
@@ -73,6 +67,10 @@ if st.button("Mode entrainement, correction à chaque question"):
 
 
 if st.session_state.mode == 1:
+    st.session_state.setdefault('mode', 0)
+    st.session_state.setdefault('score', 0)
+    st.session_state.setdefault('indexkey', 0)
+
     for index, row in df.iterrows():
         st.subheader("Question " + str(index+1))
         st.write(row['ENONCE'])
