@@ -3,10 +3,6 @@ import pandas as pd
 import random
 
 # Function Definitions
-def select_random_elements_from_list(number_of_selection, liste):
-    if number_of_selection > len(liste):
-        return "Error: More elements requested than are available in the list."
-    return random.sample(liste, number_of_selection)
 
 def extraction_des_reponses(chaine):
     cadre = "[]\"'"
@@ -31,6 +27,8 @@ def fetch_data(session, number_of_rows_to_fetch=10):
 
 st.title("Application d'entrainement pour la certification Snowflake Core")
 
+# Display the select box and get user input
+nombre_de_question = st.selectbox("Nombre de questions", list(range(1, 51)))
 
 if 'mode' not in st.session_state:
     st.session_state.mode = 0
