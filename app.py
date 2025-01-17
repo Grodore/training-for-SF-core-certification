@@ -50,22 +50,15 @@ session = cnx.session()
 
 df = fetch_data(session,nombre_de_question)
 corrections = []
-st.dataframe(df)
+
 
 
 indexkey=0
 
-for index, row in df.iterrows():
-        st.subheader("Question " + str(index+1))
-        st.write(row['ENONCE'])
-        rep_list = []
-        rep_list = extraction_des_reponses(df['REPONSES'][0])
-        corrections.append(extraction_des_reponses(df['CORRECTION'][0]))
-        for r in rep_list:
-            indexkey+=1
-            st.checkbox(r, key=indexkey)
+
 
 if st.button("Mode examen, score et correction à la fin"):
+
     st.write("Mode examen selectionné !")
 
 if st.button("Mode entrainement, correction à chaque question"):
@@ -74,6 +67,16 @@ if st.button("Mode entrainement, correction à chaque question"):
 
 
 
+if mode == 1:
+    for index, row in df.iterrows():
+        st.subheader("Question " + str(index+1))
+        st.write(row['ENONCE'])
+        rep_list = []
+        rep_list = extraction_des_reponses(df['REPONSES'][index])
+        corrections.append(extraction_des_reponses(df['CORRECTION'][index]))
+        for r in rep_list:
+            indexkey+=1
+            st.checkbox(r, key=indexkey)
 
 if corrections:
     st.write("Correction")
