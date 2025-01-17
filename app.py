@@ -65,4 +65,4 @@ if st.session_state.mode == 1:
             st.session_state.score += 1
     if st.button("Afficher le score final"):
         st.write("Score final :", st.session_state.score)
-        
+st.session_state.score = 0
