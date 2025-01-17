@@ -52,7 +52,8 @@ session = cnx.session()
 #my_dataframe = session.table("SF_CORE_CERTIFICATION_TRAINING.TRAINING_DATA.QUESTIONS")
 # Using Streamlit to display the data
 
-df = fetch_data(session,nombre_de_question)
+if 'df' not in st.session_state:
+    st.session_state.df = fetch_data(session,nombre_de_question)
 
 
 
