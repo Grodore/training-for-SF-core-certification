@@ -58,16 +58,7 @@ indexkey=0
 
 
 if st.button("Mode examen, score et correction à la fin"):
-    mode = 1
     st.write("Mode examen selectionné !")
-
-if st.button("Mode entrainement, correction à chaque question"):
-    mode = 2
-    st.write("Mode entrainement selectionné !")
-
-
-
-if mode == 1:
     for index, row in df.iterrows():
         st.subheader("Question " + str(index+1))
         st.write(row['ENONCE'])
@@ -77,6 +68,13 @@ if mode == 1:
         for r in rep_list:
             indexkey+=1
             st.checkbox(r, key=indexkey)
+
+if st.button("Mode entrainement, correction à chaque question"):
+    mode = 2
+    st.write("Mode entrainement selectionné !")
+
+
+
 
 if corrections:
     st.write("Correction")
