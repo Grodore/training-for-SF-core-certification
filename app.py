@@ -40,6 +40,7 @@ st.title('Application d\'entrainement pour la certification Snowflake Core')
 
 nombre_de_question =st.selectbox("Nombre de questions", list(range(1,50)))
 mode = 0
+score = 0
 
 
 
@@ -49,7 +50,6 @@ session = cnx.session()
 # Using Streamlit to display the data
 
 df = fetch_data(session,nombre_de_question)
-corrections = []
 
 
 
@@ -73,14 +73,13 @@ if mode == 1:
         st.write(row['ENONCE'])
         rep_list = []
         rep_list = extraction_des_reponses(df['REPONSES'][index])
+        corrections = []
         corrections.append(extraction_des_reponses(df['CORRECTION'][index]))
+        checked = []
         for r in rep_list:
             indexkey+=1
-            st.checkbox(r, key=indexkey)
-
-if corrections:
-    st.write("Correction")
-    for c in corrections:
-        st.write(c)
-else:
-    st.write("Pas de correction disponible pour le moment")
+            if st.checkbox(r, key=indexkey):
+                checked.append(r)
+        if checked == corrections:
+            score +=1
+st.write("Score final : ", score)
