@@ -41,11 +41,15 @@ st.title('Application d\'entrainement pour la certification Snowflake Core')
 nombre_de_question =st.selectbox("Nombre de questions", list(range(1,50)))
 mode = 0
 score = 0
+indexkey = 0
 
 if mode not in st.session_state:
     st.session_state.mode=0
 if score not in st.session_state:
     st.session_state.score=0
+if indexkey not in st.session_state:
+    st.session_state.indexkey=0
+
 
 
 
@@ -55,10 +59,6 @@ session = cnx.session()
 # Using Streamlit to display the data
 
 df = fetch_data(session,nombre_de_question)
-
-
-
-indexkey=0
 
 
 
@@ -79,12 +79,13 @@ if st.session_state.mode == 1:
         rep_list = []
         rep_list = extraction_des_reponses(df['REPONSES'][index])
         corrections = []
-        corrections.append(extraction_des_reponses(df['CORRECTION'][index]))
+        corrections = extraction_des_reponses(df['CORRECTION'][index])
         checked = []
         for r in rep_list:
-            indexkey+=1
-            if st.checkbox(r, key=indexkey):
+            st.session_state.indexkey+=1
+            if st.checkbox(r, key=st.session_state.indexkey):
                 checked.append(r)
         if checked == corrections:
             st.session_state.score +=1
-st.write("Score final : ", st.session_state.score)
+            
+    st.write("Score final : ", st.session_state.score)
