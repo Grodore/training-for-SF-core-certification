@@ -58,7 +58,7 @@ indexkey=0
 
 
 if st.button("Mode examen, score et correction à la fin"):
-
+    mode =1
     st.write("Mode examen selectionné !")
 
 if st.button("Mode entrainement, correction à chaque question"):
