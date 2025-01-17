@@ -16,6 +16,8 @@ def extraction_des_reponses(chaine):
     for i in cadre:
         chaine = chaine.replace(i, "")
     liste = chaine.split(',')
+    for i in range(len(liste)):
+        liste[i] = liste[i].strip()
     return liste
 
 
@@ -47,21 +49,11 @@ session = cnx.session()
 # Using Streamlit to display the data
 
 df = fetch_data(session,nombre_de_question)
-#afficher la première question
-st.write(df['ENONCE'][0])
+corrections = []
+
 
 
 indexkey=0
-for index, row in df.iterrows():
-    st.write(row['ENONCE'])
-    rep_list = []
-    rep_list = extraction_des_reponses(df['REPONSES'][0])
-    for r in rep_list:
-        indexkey+=1
-        st.checkbox(r, key=indexkey)
-
-
-
 
 
 
@@ -75,4 +67,17 @@ if st.button("Mode entrainement, correction à chaque question"):
 
 
 
+if mode == 1:
+    for index, row in df.iterrows():
+        st.subheader("Question " + str(index+1))
+        st.write(row['ENONCE'])
+        rep_list = []
+        rep_list = extraction_des_reponses(df['REPONSES'][0])
+        corrections.append(extraction_des_reponses(df['CORRECTION'][0]))
+        for r in rep_list:
+            indexkey+=1
+            st.checkbox(r, key=indexkey)
 
+
+for c in corrections:
+    st.write(c)
