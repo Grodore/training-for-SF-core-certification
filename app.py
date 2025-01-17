@@ -31,14 +31,6 @@ def fetch_data(session, number_of_rows_to_fetch=10):
 
 st.title("Application d'entrainement pour la certification Snowflake Core")
 
-# Display the select box and get user input
-nombre_de_question = st.selectbox("Nombre de questions", list(range(1, 51)))
-if 'df' not in st.session_state:
-    cnx = st.connection("snowflake")
-    session = cnx.session()
-    st.session_state.df = fetch_data(session, nombre_de_question)
-
-
 
 if 'mode' not in st.session_state:
     st.session_state.mode = 0
