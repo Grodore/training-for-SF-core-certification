@@ -46,6 +46,7 @@ if st.button("Fetch Data"):
     cnx = st.connection("snowflake")
     session = cnx.session()
     st.session_state.df = fetch_data(session, nombre_de_question)
+    st.dataframe(st.session_state.df)
 
 # Check if the DataFrame is loaded
 if 'df' in st.session_state:
