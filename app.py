@@ -24,10 +24,14 @@ def fetch_data(session, number_of_rows_to_fetch=10):
     return df
 
 st.title("Application d'entrainement pour la certification Snowflake Core")
+
+nombre_de_question =st.selectbox("Nombre de questions", list(range(1,50)))
+
+cnx = st.connection("snowflake")
+session = cnx.session()
+
 if 'df' not in st.session_state:
-    cnx = st.connection("snowflake")
-    session = cnx.session()
-    st.session_state.df = fetch_data(session, st.selectbox("Nombre de questions", range(1, 51)))
+    st.session_state.df = fetch_data(session, nombre_de_question)
 
 if 'mode' not in st.session_state:
     st.session_state.mode = 0
@@ -59,4 +63,6 @@ if st.session_state.mode == 1:
                 st.session_state.checked_answers[key] = False
         if set(user_checks) == set(corrections):
             st.session_state.score += 1
-    st.write("Score final :", st.session_state.score)
+    if st.button("Afficher le score final"):
+        st.write("Score final :", st.session_state.score)
+        
