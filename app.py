@@ -57,25 +57,25 @@ if 'df' in st.session_state:
     if st.button("Mode entrainement, correction à chaque question"):
         st.session_state.mode = 2
         st.write("Mode entrainement sélectionné !")
-        if st.session_state.mode == 1:
-            for index, row in enumerate(st.session_state.df.itertuples()):
-                st.subheader(f"Question {index + 1}")
-                st.write(row.ENONCE)
-                rep_list = extraction_des_reponses(row.REPONSES)
-                corrections = extraction_des_reponses(row.CORRECTION)
-                user_checks = []
-                for i, r in enumerate(rep_list):
-                    key = f"check-{index}-{i}"
-                    if st.checkbox(r, key=key, value=st.session_state.checked_answers.get(key, False)):
-                        user_checks.append(r)
-                        st.session_state.checked_answers[key] = True
-                    else:
-                        st.session_state.checked_answers[key] = False
-                if set(user_checks) == set(corrections):
-                    st.session_state.score += 1
-            if st.button("Afficher le score final"):
-                st.subheader("Score final :", st.session_state.score)
-                st.session_state.score = 0
+    if st.session_state.mode == 1:
+        for index, row in enumerate(st.session_state.df.itertuples()):
+            st.subheader(f"Question {index + 1}")
+            st.write(row.ENONCE)
+            rep_list = extraction_des_reponses(row.REPONSES)
+            corrections = extraction_des_reponses(row.CORRECTION)
+            user_checks = []
+            for i, r in enumerate(rep_list):
+                key = f"check-{index}-{i}"
+                if st.checkbox(r, key=key, value=st.session_state.checked_answers.get(key, False)):
+                    user_checks.append(r)
+                    st.session_state.checked_answers[key] = True
+                else:
+                    st.session_state.checked_answers[key] = False
+            if set(user_checks) == set(corrections):
+                st.session_state.score += 1
+        if st.button("Afficher le score final"):
+            st.subheader("Score final :", st.session_state.score)
+            st.session_state.score = 0
 
         st.write("Score final :", st.session_state.score)
 
