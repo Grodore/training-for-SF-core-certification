@@ -30,13 +30,17 @@ st.title("Application d'entrainement pour la certification Snowflake Core")
 # Display the select box and get user input
 nombre_de_question = st.selectbox("Nombre de questions", list(range(1, 51)))
 
+
+
+
 if 'mode' not in st.session_state:
     st.session_state.mode = 0
 if 'score' not in st.session_state:
     st.session_state.score = 0
 if 'checked_answers' not in st.session_state:
     st.session_state.checked_answers = {}
-
+if 'df' not in st.session_state:
+    st.session_state.df = None
 # Button to fetch or refresh data
 if st.button("Fetch Data"):
     cnx = st.connection("snowflake")
