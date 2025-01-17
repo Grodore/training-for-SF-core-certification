@@ -27,13 +27,14 @@ st.title("Application d'entrainement pour la certification Snowflake Core")
 
 nombre_de_question =st.selectbox("Nombre de questions", list(range(1,50)))
 
-cnx = st.connection("snowflake")
-session = cnx.session()
+
 
 if 'df' not in st.session_state:
+    cnx = st.connection("snowflake")
+    session = cnx.session()
     st.session_state.df = fetch_data(session, nombre_de_question)
-else :
-    st.session_state.df = fetch_data(session, nombre_de_question)
+
+
 if 'mode' not in st.session_state:
     st.session_state.mode = 0
 if 'score' not in st.session_state:
