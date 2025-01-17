@@ -78,6 +78,9 @@ if mode == 1:
             indexkey+=1
             st.checkbox(r, key=indexkey)
 
-
-for c in corrections:
-    st.write(c)
+if corrections:
+    st.write("Correction")
+    for c in corrections:
+        st.write(c)
+else:
+    st.write("Pas de correction disponible pour le moment")
