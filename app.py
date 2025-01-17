@@ -74,7 +74,8 @@ if 'df' in st.session_state:
             if set(user_checks) == set(corrections):
                 st.session_state.score += 1
         if st.button("Afficher le score final"):
-            st.subheader("Score final :", st.session_state.score)
+            st.subheader("Score final :")
+            st.write(st.session_state.score)
             st.session_state.score = 0
 
 
