@@ -72,13 +72,13 @@ if st.session_state.mode == 1:
     st.session_state.setdefault('score', 0)
     st.session_state.setdefault('indexkey', 0)
 
-    for index, row in df.iterrows():
+    for index, row in st.session_state.df.iterrows():
         st.subheader("Question " + str(index+1))
         st.write(row['ENONCE'])
         rep_list = []
-        rep_list = extraction_des_reponses(df['REPONSES'][index])
+        rep_list = extraction_des_reponses(st.session_state.df['REPONSES'][index])
         corrections = []
-        corrections = extraction_des_reponses(df['CORRECTION'][index])
+        corrections = extraction_des_reponses(st.session_state.df['CORRECTION'][index])
         checked = []
         for r in rep_list:
             st.session_state.indexkey+=1
